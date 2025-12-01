@@ -1,5 +1,3 @@
-module Main where
-
 import System.IO
 import AOC2025 (parse, step)
 

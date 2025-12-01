@@ -1,5 +1,3 @@
-module Main where
-
 import Day01Part2 (runPart2)
 
 main :: IO ()
