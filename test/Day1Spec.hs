@@ -1,4 +1,4 @@
-module Day1Spec (spec) where
+module Day01Spec (spec) where
 
 import Test.Hspec
 import AOC2025
