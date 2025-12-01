@@ -1,60 +1,18 @@
-# Stack build files
-
 .stack-work/
-
-# Cabal build files
-
 dist/
 dist-*/
 cabal-dev/
-
-# Stack configuration lock
-
 stack.yaml.lock
-
-# Local ghci config
-
 .ghci
 .ghci.local
-
-# HLS / editor artifacts
-
 .hie/
 .hls/
-
-# Binary outputs
-
 *.hi
 *.o
 *.dyn_hi
 *.dyn_o
-
-# GHC environment files
-
 .ghc.environment.*
-
-# MacOS noise
-
 .DS_Store
-
-# Vim/Emacs/etc
-
 *.swp
 *~
 *.tmp
-
-# VSCode
-
-.vscode/
-
-# Executables created by stack install
-
-~/.local/bin/*
-
-# Input files (optional — keep AOC inputs out of git)
-
-# Uncomment if you do NOT want puzzle inputs committed:
-
-# input.txt
-
-# inputs/
