@@ -13,6 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install git-crypt
+      run: sudo apt-get install -y git-crypt
+
+    - name: Setup git-crypt key
+      env:
+        GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
+      run: echo "$GIT_CRYPT_KEY" | base64 -d > ./git-crypt-key
+
+    - name: Unlock repo secrets
+      run: git-crypt unlock ./git-crypt-key
+
+    - name: Remove key
+      run: rm ./git-crypt-key
+
     - name: Setup Haskell
       uses: haskell-actions/setup@v2
       with:
