@@ -25,7 +25,7 @@ parse _ = error "Invalid input"
 
 type Pos = Int
 
--- Apply a rotation and count zero hits (Part 1 logic)
+-- apply a rotation and count zero hits (part 1 logic)
 step :: (Pos, Int) -> Instruction -> (Pos, Int)
 step (pos, count) (Instr dir dist) =
     let newPos = case dir of

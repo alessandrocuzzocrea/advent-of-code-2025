@@ -16,9 +16,7 @@ parse input =
 invalidsInRange :: (Int, Int) -> [Int]
 invalidsInRange (lo, hi) =
     let 
-        -- Max digits we need to consider. 
-        -- If hi is 123456 (6 digits), we need to check X with length 1, 2, 3.
-        -- If hi is 100 (3 digits), we check X with length 1.
+        -- determine the maximum length of X (half the digits of hi) to generate candidates
         maxDigits = length (show hi)
         maxHalfLen = maxDigits `div` 2
         
@@ -31,25 +29,18 @@ invalidsInRange (lo, hi) =
             return n
             
     in filter (\n -> n >= lo && n <= hi) candidates
-
--- Part 2: Invalid IDs are formed by repeating a sequence X at least twice.
--- N = X concatenated k times, where k >= 2.
--- We iterate over possible lengths of X (len) and possible repetition counts (k).
--- The total length of N will be len * k.
--- We only need to consider N <= hi.
-
+    
+-- part 2: Invalid IDs are formed by repeating a sequence X at least twice
 invalidsInRangePart2 :: (Int, Int) -> [Int]
 invalidsInRangePart2 (lo, hi) =
     let 
         maxDigits = length (show hi)
         
         candidates = do
-            -- Length of the base sequence X
+            -- length of the base sequence X
             len <- [1 .. maxDigits `div` 2]
             
-            -- Number of repetitions k
-            -- Minimum k is 2.
-            -- Max k is such that len * k <= maxDigits
+            -- number of repetitions k
             k <- [2 .. maxDigits `div` len]
             
             let startX = 10 ^ (len - 1)
@@ -57,11 +48,7 @@ invalidsInRangePart2 (lo, hi) =
             
             x <- [startX .. endX]
             
-            -- Construct N by repeating X, k times
-            -- Example: X=12, k=3 -> 121212
-            -- N = X * (10^(len*(k-1)) + ... + 10^0)
-            -- But simpler to just construct it iteratively or mathematically
-            
+            -- construct N by repeating X, k times
             let n = constructRepetition x len k
             return n
             
@@ -83,17 +70,7 @@ part1 input =
 part2 :: String -> Int
 part2 input = 
     let ranges = parse input
-        -- Use a Set or unique list to avoid double counting if multiple (len, k) produce same N?
-        -- Actually, can a number be formed by repeating X k times AND Y m times?
-        -- Example: 111111 (X=1, k=6) and (X=11, k=3) and (X=111, k=2).
-        -- The problem says "made only of some sequence of digits repeated at least twice".
-        -- So 111111 is definitely invalid. We just need to sum it once.
-        -- The ranges are disjoint in the input? The problem says "ranges separated by commas".
-        -- It doesn't explicitly say they are disjoint, but usually they are.
-        -- However, within a single range, we might generate the same number multiple times.
-        -- e.g. 111111 from X=1,k=6 and X=11,k=3.
-        -- So we should deduplicate candidates per range.
-        
+        -- deduplicate per range because a number like 111111 can be formed by repeating 1 (6x), 11 (3x), or 111 (2x)
         invalids = concatMap (unique . invalidsInRangePart2) ranges
     in sum invalids
 
