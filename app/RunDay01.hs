@@ -1,9 +1,6 @@
-import System.IO
-import AOC2025 (parse, step)
+import Day01 (part1)
 
 main :: IO ()
 main = do
     input <- readFile "inputs/day01.txt"
-    let instructions = map parse (lines input)
-        (_, count)   = foldl step (50, 0) instructions
-    print count
+    print (part1 input)
