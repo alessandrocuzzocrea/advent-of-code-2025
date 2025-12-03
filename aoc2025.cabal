@@ -2,18 +2,7 @@ cabal-version:       2.2
 
 name:                aoc2025
 version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/githubuser/aoc2025#readme
-license:             BSD-3-Clause
-license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2025 Author name here
-category:            Web
 build-type:          Simple
-extra-source-files:  README.md
-                     CHANGELOG.md
 
 library
   hs-source-dirs: src
