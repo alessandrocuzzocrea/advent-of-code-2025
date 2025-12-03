@@ -6,11 +6,10 @@ import Data.Ord (comparing)
 part1 :: String -> Int
 part1 input = sum $ map (solveBank 2) (lines input)
 
--- generalize solveBank to pick k digits
 solveBank :: Int -> String -> Int
 solveBank k s = read (solve k s)
 
--- recursive solver: pick k digits from s to maximize the resulting number
+-- recursive solver pick k digits from s to maximize the resulting number
 solve :: Int -> String -> String
 solve 0 _ = ""
 solve k s =
@@ -18,10 +17,10 @@ solve k s =
         lastIdx = length s - k
         candidates = take (lastIdx + 1) s
         
-        -- pick largest digit; if ties, pick first occurrence to maximize remaining suffix
+        -- pick largest digit if ties pick first occurrence to maximize remaining suffix
         maxDigit = maximum candidates
         
-        -- Find first occurrence of maxDigit
+        -- find first occurrence of maxDigit
         (prefix, matchAndAfter) = break (== maxDigit) s
         
         -- recurse on the suffix following the chosen digit
