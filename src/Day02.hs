@@ -12,7 +12,7 @@ parse input =
     toPairs (x:y:xs) = (x,y) : toPairs xs
     toPairs _ = []
 
--- generate invalid IDs (N = X concatenated with X) within a range by iterating possible lengths of X.
+-- generate invalid IDs (N = X concatenated with X) within a range by iterating possible lengths of X
 invalidsInRange :: (Int, Int) -> [Int]
 invalidsInRange (lo, hi) =
     let 
