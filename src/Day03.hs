@@ -1,8 +1,5 @@
 module Day03 (part1, part2) where
 
-import Data.List (maximumBy)
-import Data.Ord (comparing)
-
 part1 :: String -> Int
 part1 input = sum $ map (solveBank 2) (lines input)
 
@@ -21,7 +18,7 @@ solve k s =
         maxDigit = maximum candidates
         
         -- find first occurrence of maxDigit
-        (prefix, matchAndAfter) = break (== maxDigit) s
+        (_, matchAndAfter) = break (== maxDigit) s
         
         -- recurse on the suffix following the chosen digit
         remainingS = tail matchAndAfter
