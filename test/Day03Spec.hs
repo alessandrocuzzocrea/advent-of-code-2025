@@ -18,5 +18,5 @@ spec = do
             part1 exampleInput `shouldBe` 357
 
     describe "part2" $ do
-        it "works" $
-            part2 "" `shouldBe` 0
+        it "matches the example" $
+            part2 exampleInput `shouldBe` 3121910778619
