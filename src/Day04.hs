@@ -31,4 +31,11 @@ part1 input =
     in Set.size $ Set.filter (\c -> countNeighbors grid c < 4) grid
 
 part2 :: String -> Int
-part2 _ = 0
+part2 input = solvePart2 (parse input)
+
+solvePart2 :: Set Coord -> Int
+solvePart2 grid =
+    let removable = Set.filter (\c -> countNeighbors grid c < 4) grid
+    in if Set.null removable
+       then 0
+       else Set.size removable + solvePart2 (Set.difference grid removable)
