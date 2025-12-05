@@ -1,5 +1,7 @@
 module Day05 (part1, part2) where
 
+import Data.List (sort)
+
 type Range = (Int, Int)
 
 parse :: String -> ([Range], [Int])
@@ -23,4 +25,19 @@ isFresh :: [Range] -> Int -> Bool
 isFresh ranges i = any (\(l, h) -> i >= l && i <= h) ranges
 
 part2 :: String -> Int
-part2 _ = 0
+part2 input = 
+    let (ranges, _) = parse input
+        merged = mergeRanges (sort ranges)
+    in sum $ map rangeLength merged
+
+mergeRanges :: [Range] -> [Range]
+mergeRanges [] = []
+mergeRanges (r:rs) = go r rs
+  where
+    go current [] = [current]
+    go (start, end) ((nextStart, nextEnd):rest)
+        | nextStart <= end + 1 = go (start, max end nextEnd) rest
+        | otherwise = (start, end) : go (nextStart, nextEnd) rest
+
+rangeLength :: Range -> Int
+rangeLength (start, end) = end - start + 1
