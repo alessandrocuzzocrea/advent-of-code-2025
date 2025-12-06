@@ -4,6 +4,7 @@ import qualified Day02Spec
 import qualified Day03Spec
 import qualified Day04Spec
 import qualified Day05Spec
+import qualified Day06Spec
 
 main :: IO ()
 main = hspec $ do
@@ -12,3 +13,4 @@ main = hspec $ do
     describe "Day03" Day03Spec.spec
     describe "Day04" Day04Spec.spec
     describe "Day05" Day05Spec.spec
+    describe "Day06" Day06Spec.spec
