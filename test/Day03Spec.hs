@@ -14,9 +14,9 @@ exampleInput = unlines
 spec :: Spec
 spec = do
     describe "part1" $ do
-        it "matches the example" $
+        it "works with example" $
             part1 exampleInput `shouldBe` 357
 
     describe "part2" $ do
-        it "matches the example" $
+        it "works with example" $
             part2 exampleInput `shouldBe` 3121910778619

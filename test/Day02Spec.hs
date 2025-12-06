@@ -9,9 +9,9 @@ exampleInput = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,169852
 spec :: Spec
 spec = do
     describe "part1" $ do
-        it "matches the example" $
+        it "works with example" $
             part1 exampleInput `shouldBe` 1227775554
 
     describe "part2" $ do
-        it "matches the example" $
+        it "works with example" $
             part2 exampleInput `shouldBe` 4174379265
