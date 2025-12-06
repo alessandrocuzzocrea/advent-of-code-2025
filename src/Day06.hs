@@ -12,7 +12,7 @@ splitProblems input =
         maxLength = maximum (map length lines')
         paddedLines = map (padRight maxLength) lines'
         cols = transpose paddedLines
-        -- Split cols by empty columns
+        -- split cols by empty columns
         problemCols = splitByEmpty cols
     in map (unlines . transpose) problemCols
 
@@ -47,23 +47,23 @@ splitProblemsPart2 input =
         maxLength = maximum (map length lines')
         paddedLines = map (padRight maxLength) lines'
         cols = transpose paddedLines
-        -- Split cols by empty columns
+        -- split cols by empty columns
         problemCols = splitByEmpty cols
     in map (unlines . transpose) problemCols
 
 solveProblemPart2 :: String -> Int
 solveProblemPart2 s =
     let lines' = lines s
-        -- The last line contains the operator
+        -- the last line contains the operator
         operatorLine = last lines'
         operator = head $ filter (\c -> c == '+' || c == '*') operatorLine
         
-        -- The other lines contain the digits
+        -- the other lines contain the digits
         digitLines = init lines'
-        -- Transpose to get columns (numbers)
-        -- Filter out columns that are just spaces
+        -- transpose to get columns numbers
+        -- filter out columns that are just spaces
         cols = filter (not . all isSpace) (transpose digitLines)
-        -- Each column is a number, read from top to bottom
+        -- each column is a number read from top to bottom
         numbers = map readColumn cols
     in case operator of
         '+' -> sum numbers
