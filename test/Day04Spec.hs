@@ -3,12 +3,26 @@ module Day04Spec (spec) where
 import Test.Hspec
 import Day04
 
+exampleInput :: String
+exampleInput = unlines
+    [ "..@@.@@@@."
+    , "@@@.@.@.@@"
+    , "@@@@@.@.@@"
+    , "@.@@@@..@."
+    , "@@.@@@@.@@"
+    , ".@@@@@@@.@"
+    , ".@.@.@.@@@"
+    , "@.@@@.@@@@"
+    , ".@@@@@@@@."
+    , "@.@.@@@.@."
+    ]
+
 spec :: Spec
 spec = do
     describe "part1" $ do
-        it "works" $
-            part1 "" `shouldBe` 0
+        it "matches the example" $
+            part1 exampleInput `shouldBe` 13
 
     describe "part2" $ do
-        it "works" $
-            part2 "" `shouldBe` 0
+        it "matches the example" $
+            part2 exampleInput `shouldBe` 43
