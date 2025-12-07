@@ -102,6 +102,7 @@ test-suite aoc2025-test
     Day03Spec,
     Day04Spec,
     Day05Spec,
+    Day06Spec,
     Day07Spec
   build-depends:
       base >= 4.7 && < 5,
