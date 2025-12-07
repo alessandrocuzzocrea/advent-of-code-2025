@@ -31,4 +31,4 @@ spec = do
 
     describe "part2" $ do
         it "works with example" $
-            part2 exampleInput `shouldBe` 0
+            part2 exampleInput `shouldBe` 40
